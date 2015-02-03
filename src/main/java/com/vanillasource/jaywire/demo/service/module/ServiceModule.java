@@ -4,16 +4,12 @@ import com.vanillasource.jaywire.demo.service.database.JdbcDatabase;
 import com.vanillasource.jaywire.demo.service.content.DatabaseContentService;
 import com.vanillasource.jaywire.demo.service.user.DatabaseUserService;
 import java.util.function.Supplier;
+import com.vanillasource.jaywire.Scope;
+import com.vanillasource.jaywire.SingletonScopeSupport;
 
-public abstract class ServiceModule {
+public abstract class ServiceModule implements SingletonScopeSupport {
    public JdbcDatabase newJdbcDatabase() {
       return new JdbcDatabase();
-   }
-
-   public abstract Scope getSingletonScope();
-
-   public interface Scope {
-      <T> T get(Supplier<T> value);
    }
 
    public JdbcDatabase getJdbcDatabase() {
@@ -21,10 +17,10 @@ public abstract class ServiceModule {
    }
 
    public DatabaseContentService newDatabaseContentService() {
-      return new DatabaseContentService(newJdbcDatabase());
+      return new DatabaseContentService(getJdbcDatabase());
    }
 
    public DatabaseUserService newDatabaseUserService() {
-      return new DatabaseUserService(newJdbcDatabase());
+      return new DatabaseUserService(getJdbcDatabase());
    }
 }
