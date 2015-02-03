@@ -16,11 +16,11 @@ public abstract class ServiceModule implements SingletonScopeSupport {
       return getSingletonScope().get(this::newJdbcDatabase);
    }
 
-   public DatabaseContentService newDatabaseContentService() {
-      return new DatabaseContentService(getJdbcDatabase());
+   public DatabaseContentService getDatabaseContentService() {
+      return getSingletonScope().get(() -> new DatabaseContentService(getJdbcDatabase()));
    }
 
-   public DatabaseUserService newDatabaseUserService() {
-      return new DatabaseUserService(getJdbcDatabase());
+   public DatabaseUserService getDatabaseUserService() {
+      return getSingletonScope().get(() -> new DatabaseUserService(getJdbcDatabase()));
    }
 }
