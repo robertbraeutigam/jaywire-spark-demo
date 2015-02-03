@@ -3,6 +3,7 @@ package com.vanillasource.jaywire.demo.service.module;
 import com.vanillasource.jaywire.demo.service.database.JdbcDatabase;
 import com.vanillasource.jaywire.demo.service.content.DatabaseContentService;
 import com.vanillasource.jaywire.demo.service.user.DatabaseUserService;
+import java.util.function.Supplier;
 
 public abstract class ServiceModule {
    public JdbcDatabase newJdbcDatabase() {
@@ -12,22 +13,11 @@ public abstract class ServiceModule {
    public abstract Scope getSingletonScope();
 
    public interface Scope {
-      <T> T apply(Factory<T> value);
+      <T> Supplier<T> apply(Supplier<T> value);
    }
-
-   public interface Factory<T> {
-      T get();
-   }
-
-   private Factory<JdbcDatabase> jdbcDatabaseFactory = new Factory<JdbcDatabase>() {
-      @Override
-      public JdbcDatabase get() {
-         return newJdbcDatabase();
-      }
-   };
 
    public JdbcDatabase getJdbcDatabase() {
-      return getSingletonScope().apply(jdbcDatabaseFactory);
+      return getSingletonScope().apply(this::newJdbcDatabase).get();
    }
 
    public DatabaseContentService newDatabaseContentService() {
