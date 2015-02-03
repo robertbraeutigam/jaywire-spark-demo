@@ -13,11 +13,11 @@ public abstract class ServiceModule {
    public abstract Scope getSingletonScope();
 
    public interface Scope {
-      <T> Supplier<T> apply(Supplier<T> value);
+      <T> T get(Supplier<T> value);
    }
 
    public JdbcDatabase getJdbcDatabase() {
-      return getSingletonScope().apply(this::newJdbcDatabase).get();
+      return getSingletonScope().get(this::newJdbcDatabase);
    }
 
    public DatabaseContentService newDatabaseContentService() {
