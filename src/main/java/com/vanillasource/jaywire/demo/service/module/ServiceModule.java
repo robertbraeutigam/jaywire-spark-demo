@@ -12,11 +12,22 @@ public abstract class ServiceModule {
    public abstract Scope getSingletonScope();
 
    public interface Scope {
-      <T> T apply(T value);
+      <T> T apply(Factory<T> value);
    }
 
+   public interface Factory<T> {
+      T get();
+   }
+
+   private Factory<JdbcDatabase> jdbcDatabaseFactory = new Factory<JdbcDatabase>() {
+      @Override
+      public JdbcDatabase get() {
+         return newJdbcDatabase();
+      }
+   };
+
    public JdbcDatabase getJdbcDatabase() {
-      return getSingletonScope().apply(newJdbcDatabase());
+      return getSingletonScope().apply(jdbcDatabaseFactory);
    }
 
    public DatabaseContentService newDatabaseContentService() {
