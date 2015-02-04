@@ -7,21 +7,21 @@ import java.util.function.Supplier;
 import com.vanillasource.jaywire.Scope;
 import com.vanillasource.jaywire.SingletonScopeSupport;
 
-public abstract class ServiceModule implements SingletonScopeSupport {
-   public JdbcDatabase newJdbcDatabase() {
+public interface ServiceModule extends SingletonScopeSupport {
+   default JdbcDatabase newJdbcDatabase() {
       System.out.println("Instantiating new database...");
       return new JdbcDatabase();
    }
 
-   public JdbcDatabase getJdbcDatabase() {
+   default JdbcDatabase getJdbcDatabase() {
       return singleton(this::newJdbcDatabase);
    }
 
-   public DatabaseContentService getDatabaseContentService() {
+   default DatabaseContentService getDatabaseContentService() {
       return singleton(() -> new DatabaseContentService(getJdbcDatabase()));
    }
 
-   public DatabaseUserService getDatabaseUserService() {
+   default DatabaseUserService getDatabaseUserService() {
       return singleton(() -> new DatabaseUserService(getJdbcDatabase()));
    }
 }
