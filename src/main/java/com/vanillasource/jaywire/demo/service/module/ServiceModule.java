@@ -9,18 +9,19 @@ import com.vanillasource.jaywire.SingletonScopeSupport;
 
 public abstract class ServiceModule implements SingletonScopeSupport {
    public JdbcDatabase newJdbcDatabase() {
+      System.out.println("Instantiating new database...");
       return new JdbcDatabase();
    }
 
    public JdbcDatabase getJdbcDatabase() {
-      return getSingletonScope().get(this::newJdbcDatabase);
+      return singleton(this::newJdbcDatabase);
    }
 
    public DatabaseContentService getDatabaseContentService() {
-      return getSingletonScope().get(() -> new DatabaseContentService(getJdbcDatabase()));
+      return singleton(() -> new DatabaseContentService(getJdbcDatabase()));
    }
 
    public DatabaseUserService getDatabaseUserService() {
-      return getSingletonScope().get(() -> new DatabaseUserService(getJdbcDatabase()));
+      return singleton(() -> new DatabaseUserService(getJdbcDatabase()));
    }
 }
