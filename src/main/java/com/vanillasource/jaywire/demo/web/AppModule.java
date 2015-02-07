@@ -1,7 +1,7 @@
 package com.vanillasource.jaywire.demo.web;
 
-import com.vanillasource.jaywire.standalone.SingletonScopeModule;
+import com.vanillasource.jaywire.standalone.StandaloneModule;
 
-public class AppModule extends SingletonScopeModule implements PageModule {
+public class AppModule extends StandaloneModule implements PageModule {
 }
 

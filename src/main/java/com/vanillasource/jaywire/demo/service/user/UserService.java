@@ -1,5 +1,8 @@
 package com.vanillasource.jaywire.demo.service.user;
 
 public interface UserService {
-   String getFullName(String userName);
+   boolean login(String userName, String password);
+
+   String getUserName();
 }
+

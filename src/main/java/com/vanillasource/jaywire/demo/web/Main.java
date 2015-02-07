@@ -9,7 +9,7 @@ public class Main {
       get("/", Main::getHomePage);
       AppModule app = new AppModule();
       get("/content", app.newContentPage());
-      get("/username", app.newUserFullNamePage());
+      get("/username", app.newUserNamePage());
    }
 
    private static final String getHomePage(Request request, Response response) {

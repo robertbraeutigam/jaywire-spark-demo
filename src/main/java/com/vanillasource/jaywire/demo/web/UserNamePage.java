@@ -4,17 +4,18 @@ import com.vanillasource.jaywire.demo.service.user.UserService;
 import spark.Route;
 import spark.Request;
 import spark.Response;
+import java.util.function.Supplier;
 
-public class UserFullNamePage implements Route {
-   private UserService userService;
+public class UserNamePage implements Route {
+   private Supplier<? extends UserService> userService;
 
-   public UserFullNamePage(UserService userService) {
+   public UserNamePage(Supplier<? extends UserService> userService) {
       this.userService = userService;
    }
 
    @Override
    public String handle(Request request, Response response) {
-      return "The john's full name is: "+userService.getFullName("john");
+      return "Your username is: "+userService.get().getUserName();
    }
 }
 

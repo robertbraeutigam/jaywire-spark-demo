@@ -7,8 +7,8 @@ public interface PageModule extends ServiceModule {
       return new ContentPage(getDatabaseContentService());
    }
 
-   default UserFullNamePage newUserFullNamePage() {
-      return new UserFullNamePage(getDatabaseUserService());
+   default UserNamePage newUserNamePage() {
+      return new UserNamePage(getDatabaseUserService());
    }
 }
 

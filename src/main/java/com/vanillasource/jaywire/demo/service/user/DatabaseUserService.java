@@ -4,13 +4,20 @@ import com.vanillasource.jaywire.demo.service.database.Database;
 
 public class DatabaseUserService implements UserService {
    private Database database;
+   private String userName;
 
    public DatabaseUserService(Database database) {
       this.database = database;
    }
 
    @Override
-   public String getFullName(String userName) {
-      return "Full Name"; //Get from database
+   public boolean login(String userName, String password) {
+      this.userName = userName;
+      return true;
+   }
+
+   @Override
+   public String getUserName() {
+      return userName;
    }
 }
