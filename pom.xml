@@ -46,7 +46,7 @@
      </dependency>
      <dependency>
         <groupId>com.vanillasource.jaywire</groupId>
-        <artifactId>jaywire</artifactId>
+        <artifactId>jaywire-spark</artifactId>
         <version>1.0.0-SNAPSHOT</version>
      </dependency>
   </dependencies>

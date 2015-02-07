@@ -10,5 +10,9 @@ public interface PageModule extends ServiceModule {
    default UserNamePage newUserNamePage() {
       return new UserNamePage(getDatabaseUserService());
    }
+
+   default SetUserNamePage newSetUserNamePage() {
+      return new SetUserNamePage(getDatabaseUserService());
+   }
 }
 

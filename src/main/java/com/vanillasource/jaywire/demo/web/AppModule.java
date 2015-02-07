@@ -1,7 +1,7 @@
 package com.vanillasource.jaywire.demo.web;
 
-import com.vanillasource.jaywire.standalone.StandaloneModule;
+import com.vanillasource.jaywire.spark.SparkModule;
 
-public class AppModule extends StandaloneModule implements PageModule {
+public class AppModule extends SparkModule implements PageModule {
 }
 
