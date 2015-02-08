@@ -3,10 +3,10 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.vanillasource.jaywire</groupId>
-  <artifactId>jaywire-demo</artifactId>
+  <artifactId>jaywire-spark-demo</artifactId>
   <packaging>jar</packaging>
   <version>1.0.0-SNAPSHOT</version>
-  <name>JayWire Demo Application</name>
+  <name>JayWire Spark Demo Application</name>
 
   <build>
      <plugins>
