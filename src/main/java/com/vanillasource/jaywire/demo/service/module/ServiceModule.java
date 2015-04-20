@@ -5,12 +5,15 @@ import com.vanillasource.jaywire.demo.service.content.*;
 import com.vanillasource.jaywire.demo.service.user.*;
 
 public class ServiceModule {
+   private Database database = new JdbcDatabase();
+   private ContentService contentService = new DatabaseContentService(getDatabase());
+
    public Database getDatabase() {
-      return new JdbcDatabase();
+      return database;
    }
 
    public ContentService getContentService() {
-      return new DatabaseContentService(getDatabase());
+      return contentService;
    }
 
    public UserService getUserService() {
