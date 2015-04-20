@@ -7,9 +7,10 @@ import spark.Response;
 public class Main {
    public static final void main(String[] args) {
       get("/", Main::getHomePage);
-      // ContentPage
-      // UserNamePage
-      // SetUserNamePage
+      AppModule module = new AppModule();
+      get("/content", module.getContentPage());
+      get("/username", module.getUserNamePage());
+      get("/username", module.getSetUserNamePage());
    }
 
    private static final String getHomePage(Request request, Response response) {

@@ -9,16 +9,16 @@ import com.vanillasource.jaywire.Scope;
 import com.vanillasource.jaywire.SessionScopeSupport;
 import java.util.function.Supplier;
 
-public abstract class ServiceModule implements SingletonScopeSupport, SessionScopeSupport {
-   public Database getDatabase() {
+public interface ServiceModule extends SingletonScopeSupport, SessionScopeSupport {
+   default Database getDatabase() {
       return singleton( () -> new JdbcDatabase() );
    }
 
-   public ContentService getContentService() {
+   default ContentService getContentService() {
       return singleton( () -> new DatabaseContentService(getDatabase()) );
    }
 
-   public Supplier<UserService> getUserService() {
+   default Supplier<UserService> getUserService() {
       return getSessionScope().apply(() -> new DatabaseUserService(getDatabase()));
    }
 }
