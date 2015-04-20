@@ -10,7 +10,7 @@ public class Main {
       AppModule module = new AppModule();
       get("/content", module.getContentPage());
       get("/username", module.getUserNamePage());
-      get("/username", module.getSetUserNamePage());
+      post("/username", module.getSetUserNamePage());
    }
 
    private static final String getHomePage(Request request, Response response) {
