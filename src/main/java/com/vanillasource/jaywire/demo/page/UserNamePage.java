@@ -7,9 +7,9 @@ import spark.Response;
 import java.util.function.Supplier;
 
 public class UserNamePage implements Route {
-   private Supplier<? extends UserService> userService;
+   private Supplier<UserService> userService;
 
-   public UserNamePage(Supplier<? extends UserService> userService) {
+   public UserNamePage(Supplier<UserService> userService) {
       this.userService = userService;
    }
 
