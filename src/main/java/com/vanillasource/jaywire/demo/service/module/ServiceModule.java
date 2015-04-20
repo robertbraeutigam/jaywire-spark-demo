@@ -4,7 +4,9 @@ import com.vanillasource.jaywire.demo.service.database.*;
 import com.vanillasource.jaywire.demo.service.content.*;
 import com.vanillasource.jaywire.demo.service.user.*;
 
-public abstract class ServiceModule implements SingletonSupport {
+import com.vanillasource.jaywire.SingletonScopeSupport;
+
+public abstract class ServiceModule implements SingletonScopeSupport {
    public Database getDatabase() {
       return singleton( () -> new JdbcDatabase() );
    }
