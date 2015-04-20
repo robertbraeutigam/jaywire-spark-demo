@@ -1,4 +1,4 @@
-package com.vanillasource.jaywire.demo.web;
+package com.vanillasource.jaywire.demo.page;
 
 import com.vanillasource.jaywire.demo.service.user.UserService;
 import spark.Route;
