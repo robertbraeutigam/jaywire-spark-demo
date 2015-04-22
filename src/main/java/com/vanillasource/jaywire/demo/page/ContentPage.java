@@ -14,6 +14,6 @@ public class ContentPage implements Route {
 
    @Override
    public String handle(Request request, Response response) {
-      return "The content from Page #1 is: "+contentService.getPageContent("page1");
+      return "The content from Page #1 is: "+contentService.getContent("page1").getHtml();
    }
 }

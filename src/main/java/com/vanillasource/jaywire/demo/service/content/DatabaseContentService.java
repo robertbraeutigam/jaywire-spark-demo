@@ -10,8 +10,8 @@ public class DatabaseContentService implements ContentService {
    }
 
    @Override
-   public String getPageContent(String pageName) {
-      return "Content"; // Get from the database
+   public Content getContent(String pageName) {
+      return new ContentImpl("<strong>Content</strong>");
    }
 }
 
